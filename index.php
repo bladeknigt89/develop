@@ -14,8 +14,11 @@ if (LIVE_MODE == false) {
           </html>
 ';
 } else {
-require LIB_PATH.'Loader.php';
-    $app=new Loader();
+    require LIB_PATH . 'Loader.php';
+    require LIB_PATH . 'Controller.php';
+    require LIB_PATH . 'Model.php';
+    require LIB_PATH . 'View.php';
+    $app = new Loader();
 
 
 }

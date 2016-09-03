@@ -1,0 +1,15 @@
+.main {
+    background-color: black;
+    color: #269abc;
+    height: 100%;
+    min-height: 800px;
+}
+
+.menu {
+    min-height: 50px;
+}
+
+.menupoint {
+    text-decoration: none;
+
+}

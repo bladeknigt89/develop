@@ -1,10 +1,17 @@
 <?php
 
-class Index
+class Index extends Controller
 {
     function __construct()
     {
-        echo "we are on Index";
+        parent::__construct();
+        $this->renderIndex();
+        $this->viewRenderer->showFooter();
     }
+    function renderIndex()
+    {
+        $this->viewRenderer->render('Index/index');
+    }
+
 
 }
