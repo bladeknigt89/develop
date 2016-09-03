@@ -1,15 +1,24 @@
-.main {
-    background-color: black;
+n.main {
+
     color: #269abc;
     height: 100%;
-    min-height: 800px;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .menu {
     min-height: 50px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 22px;
+
 }
 
-.menupoint {
-    text-decoration: none;
+.blackbar {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-style: hidden;
+    color: red;
+}
 
+.menuLink:hover {
+    background-color: #5bc0de;
 }

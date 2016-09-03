@@ -1,6 +1,9 @@
-.contentDiv
-{
+.contentDiv {
+    border-radius: 6px;
     height: 100%;
     min-height: 800px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
 
 }

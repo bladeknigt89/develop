@@ -1,6 +1,6 @@
 <?php
 require('confs/main.php');
-if (LIVE_MODE == false) {
+if (LIVE_MODE == 'false') {
     echo '<html>
             <head>
              <title> BladeknightHUN\'s website Under Construction</title>
