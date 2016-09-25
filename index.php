@@ -9,11 +9,6 @@ function getLiveMode()
     $sth = $conn->prepare($query);
     $sth->execute();
     $data = $sth->fetchAll();
-   foreach ($data as $key)
-   {
-       echo $key['propertyName'];
-       echo $key['propertyValue'];
-   }
     return $data[0]['propertyValue'];
 }
 
