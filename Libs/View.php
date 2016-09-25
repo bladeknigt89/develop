@@ -2,8 +2,10 @@
 
 class View
 {
-    function __construct()
+    protected $settings;
+    function __construct($setings)
     {
+        $this->settings=$setings;
         $this->showHeader();
     }
 

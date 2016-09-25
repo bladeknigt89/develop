@@ -1,5 +1,5 @@
 <?php
-define('LIVE_MODE', 'true');
+//define('LIVE_MODE', 'true');
 define('MAIN_PATH', $_SERVER['DOCUMENT_ROOT'] . '/');
 define('CONTROLLER_PATH', 'Controller/');
 define('LIB_PATH', 'Libs/');

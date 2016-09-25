@@ -1,6 +1,25 @@
 <?php
 require('confs/main.php');
-if (LIVE_MODE == 'false') {
+include('confs/db.php');
+
+function getLiveMode()
+{
+    $query = "select propertyName, propertyValue from system_settings where propertyName='live_mode'";
+    $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . "", DB_USER, DB_PASSWORD);
+    $sth = $conn->prepare($query);
+    $sth->execute();
+    $data = $sth->fetchAll();
+   foreach ($data as $key)
+   {
+       echo $key['propertyName'];
+       echo $key['propertyValue'];
+   }
+    return $data[0]['propertyValue'];
+}
+
+$livemode = getLiveMode();
+
+if ($livemode == 'false') {
     echo '<html>
             <head>
              <title> BladeknightHUN\'s website Under Construction</title>
