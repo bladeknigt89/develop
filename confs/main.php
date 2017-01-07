@@ -11,6 +11,3 @@ define('IMAGE_PATH', 'Public/IMAGES/');
 $errorMessage = '';
 $background = '/' . IMAGE_PATH . 'SYSTEM/bg.png';
 $cssFileNames = ['bootstrap.min', 'menu-style', 'content-style'];
-$menuPoints = [['name' => 'Home', 'link' => 'index', 'active' => 'true'],
-    ['name' => 'About Me', 'link' => 'aboutme', 'active' => 'true']
-];

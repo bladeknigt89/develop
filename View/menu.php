@@ -1,7 +1,12 @@
+<?php $menuPoints = array(
+    array('name' => 'Home', 'link' => 'index','active'=>'true'),
+    array('name' => 'About Me', 'link' => 'aboutme','active'=>'true')
+);
+?>
 <div class="container menu" ">
 <div class="row">
     <nav class="navbar navbar-default blackbar" role="navigation">
-        <?php foreach ($GLOBALS['menuPoints'] as $menuPoint) {
+        <?php foreach ($menuPoints as $menuPoint) {
             $menuHtml = '<div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">';
             if ($menuPoint['active'] == "true") {
