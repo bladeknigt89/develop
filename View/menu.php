@@ -1,25 +1,28 @@
 <?php $menuPoints = array(
-    array('name' => 'Home', 'link' => 'index','active'=>'true'),
-    array('name' => 'About Me', 'link' => 'aboutme','active'=>'true')
+    array('name' => 'Kezdőlap', 'link' => 'index','active'=>'true'),
+    array('name' => 'Galéria', 'link' => 'galery','active'=>'false'),
+    array('name' => 'Árlista', 'link' => 'prices','active'=>'false')
 );
 ?>
-<div class="container menu" ">
-<div class="row">
-    <nav class="navbar navbar-default blackbar" role="navigation">
-        <?php foreach ($menuPoints as $menuPoint) {
-            $menuHtml = '<div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">';
-            if ($menuPoint['active'] == "true") {
+
+    <body>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="index.php" class="navbar-brand" id="logo">Haj és Szépségápolás</a> </div>
+                <div class="collapse navbar-collapse" id="navBar">
+                    <ul class="nav navbar-nav navbar-right">
+            <?php foreach ($menuPoints as $menuPoint) {
                 $link = $menuPoint['link'];
                 $name = $menuPoint['name'];
-                $menuHtml .= "<li class='menuLink'> <a href='" . $link . "' style='color:red;'>$name</a></li>";
-            }
-            $menuHtml .= '</ul>';
-            echo $menuHtml;
+                $menuHtml = "<li"; 
+                if($menuPoint['active'] == true){
+                    $menuHtml .= " class='active' ";
+                }
+                $menuHtml .= "><a href='" . $link . ".php'>$name</a></li>";
+                echo $menuHtml;
         } ?>
-    </nav>
-
-</div>
-</div>
-<div style="height: 50px;"></div>
-
+                    </ul>
+                </div>
+            </div>
+        </nav>
