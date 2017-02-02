@@ -11,8 +11,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="main_page.css">
-    <link rel="stylesheet" href="admin-login.css">
-    <link rel="stylesheet" href="file-upload.css">
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
@@ -28,6 +26,8 @@
         </section>
     </div>
     <script>
+        var images;
+        
         $('input:file').change(function (e) {
             e.preventDefault();
             $('#file-name').val(e.target.files[0].name);
@@ -36,38 +36,33 @@
             ev.preventDefault();
         });
         $('.file-drop').on('drop', function (ev) {
-            console.log('event detected');
             ev.preventDefault();
             var files = ev.originalEvent.dataTransfer.files;
-            var images = $.grep(files, function (file) {
+            images = $.grep(files, function (file) {
                 return file.type.indexOf("image/") === 0; // filter out images
             });
             var formData = new FormData();
             $.each(images, function (i) {
                 formData.append(i, this);
             });
-            console.log('starting placement');
+            $('#dropzone-message').remove();
             var imageCount = images.length;
             var imagePerRow = 12;
-            console.log('variables alright');
             for (var k = 1; k <= Math.ceil(imageCount / imagePerRow); k++) {
-                console.log('for 1');
                 var row = $('<div>').addClass('row');
-                console.log('for 2');
                 $('.file-drop').append(row);
-                console.log('row ready');
                 for (var j = 0; j < imagePerRow; j++) {
                     var img = $('<img>').attr('alt', images[k * j].name);
+                    var button = $('<button>').attr('type', 'button').attr('id', images[k * j].name).addClass('close').html('&times');
                     var p = $('<p>').text(images[k * j].name);
                     var caption = $('<div>').addClass('caption');
-                    var thumbnail = $('<div>').addClass('thumbnail').addClass('col-md-1');
+                    var thumbnail = $('<div>').addClass('thumbnail').addClass('col-md-1').attr('id', images[k * j].name);
                     caption.append(p);
+                    thumbnail.append(button);
                     thumbnail.append(img);
                     thumbnail.append(caption);
-                    console.log('image created');
                     img.file = images[k * j];
                     row.append(thumbnail);
-                    console.log('image appended');
                     var reader = new FileReader();
                     reader.onload = (function (aImg) {
                         return function (e) {
@@ -75,9 +70,14 @@
                         };
                     })(img);
                     reader.readAsDataURL(images[k * j]);
-                    console.log('image added fully');
                 }
             }
+        });
+        $(document).on('click', '.close', function(e){
+           images = $.grep(images, function(image){
+              return image.name != e.target.id;
+           });
+           $(this).parent().remove();
         });
     </script>
 </body>
