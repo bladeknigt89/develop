@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='//fonts.googleapis.com/css?family=Clicker Script' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=Amita' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main_page.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <section id="logo-section"> <span id="logo">Haj és SzépségÁpolás</span> </section>
+        <section id="news">
+            <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <input type="text" id=file-name> <span class="custom-file-control btn btn-default pull-right">Tallózás</span> </label>
+            <div class="file-drop"> <span id="dropzone-message">Ide húzd a képeidet!</span> </div>
+            <!--Amíg a feltöltés tart látható-->
+            <div class="alert alert-info" id="upload-info" style="display: none">
+                <div class="loader"></div>&nbsp;<strong>Feltöltés</strong></div>
+            <!--A feltöltés után válik láthatóvá-->
+            <div class="alert alert-success" id="upload-info" style="display: none"><strong>Feltöltés Sikeres!</strong></div>
+            <button class="btn btn-default" id="upload">Feltöltés</button>
+        </section>
+    </div>
+    <script>
+        var images;
+        $('input:file').change(function (e) {
+            e.preventDefault();
+            $('#file-name').val(e.target.files[0].name);
+        });
+        $('.file-drop').on('dragenter dragstart dragend dragleave dragover drag drop', function (ev) {
+            ev.preventDefault();
+        });
+        $('.file-drop').on('dragover', function (e) {
+            e.preventDefault();
+            $('.file-drop').css("border-color", "black");
+        });
+        $('.file-drop').on('dragleave drop', function (e) {
+            e.preventDefault();
+            $('.file-drop').css("border-color", "lightgrey");
+        });
+        $('.file-drop').on('drop', function (ev) {
+            ev.preventDefault();
+            var files = ev.originalEvent.dataTransfer.files;
+            images = $.grep(files, function (file) {
+                return file.type.indexOf("image/") === 0; // filter out images
+            });
+            $('#dropzone-message').remove();
+            var imageCount = images.length;
+            var imagePerRow = 12;
+            for (var k = 1; k <= Math.ceil(imageCount / imagePerRow); k++) {
+                var row = $('<div>').addClass('row');
+                $('.file-drop').append(row);
+                for (var j = 0; j < imagePerRow; j++) {
+                    var img = $('<img>').attr('alt', images[k * j].name);
+                    var button = $('<button>').attr('type', 'button').attr('id', images[k * j].name).addClass('close').html('&times');
+                    var p = $('<p>').text(images[k * j].name);
+                    var caption = $('<div>').addClass('caption');
+                    var thumbnail = $('<div>').addClass('thumbnail').addClass('col-md-1').attr('id', images[k * j].name);
+                    caption.append(p);
+                    thumbnail.append(button);
+                    thumbnail.append(img);
+                    thumbnail.append(caption);
+                    img.file = images[k * j];
+                    row.append(thumbnail);
+                    var reader = new FileReader();
+                    reader.onload = (function (aImg) {
+                        return function (e) {
+                            aImg.attr('src', e.target.result);
+                        };
+                    })(img);
+                    reader.readAsDataURL(images[k * j]);
+                }
+            }
+        });
+        $(document).on('click', '.close', function (e) {
+            images = $.grep(images, function (image) {
+                return image.name != e.target.id;
+            });
+            $(this).parent().remove();
+        });
+        $('#upload').click(function () {
+            var formData = new FormData();
+            $.each(images, function (i) {
+                formData.append(i, this);
+            });
+            jQuery.ajax({
+                url: 'php/upload.php'
+                , data: data
+                , cache: false
+                , contentType: false
+                , processData: false
+                , type: 'POST'
+                , success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
