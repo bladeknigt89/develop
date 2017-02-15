@@ -50,7 +50,7 @@ nav a:visited {
     padding: 1%;
 }
 
-#loadMore{
+#loadMore {
     width: 100%;
 }
 
@@ -94,7 +94,13 @@ th {
     text-align: right;
 }
 
-/* admin-login*/
+.pages{
+    margin: auto;
+	text-align: center;
+}
+.pages .list-group-item{
+    cursor: pointer;
+}
 
 /* centered columns styles */
 
@@ -124,6 +130,7 @@ th {
     text-align: center;
     padding: 5%;
 }
+
 
 /*file-upload*/
 
