@@ -14,7 +14,7 @@
            <!--Thumbnails-->
           <div class="col-md-4">
             <div class="thumbnail">
-              <a href="galery_category.html">
+              <a href="galery-category.php">
                
                 <!--Image Slider-->
         <div id="thumbnail_slider" class="carousel slide" data-ride="carousel">    
@@ -41,7 +41,7 @@
           </div>
           <div class="col-md-4">
             <div class="thumbnail">
-              <a href="galery_category.html">
+              <a href="galery-category.php">
                 <div id="thumbnail_slider" class="carousel slide" data-ride="carousel">    
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -66,7 +66,7 @@
           </div>
           <div class="col-md-4">
             <div class="thumbnail">
-              <a href="galery_category.html">
+              <a href="galery-category.php">
                 <div id="thumbnail_slider" class="carousel slide" data-ride="carousel">    
             <div class="carousel-inner" role="listbox">
                 <div class="item active">

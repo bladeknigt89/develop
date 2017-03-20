@@ -21,13 +21,18 @@
         <section id="news">
             <label class="custom-file">
                 <input type="file" id="file" class="custom-file-input">
-                <input type="text" id=file-name> <span class="custom-file-control btn btn-default pull-righ">Tallózás</span> </label>
+                <input type="text" id=file-name> <span class="custom-file-control btn btn-default pull-right">Tallózás</span> </label>
             <div class="file-drop"> <span id="dropzone-message">Ide húzd a képeidet!</span> </div>
+            <!--Amíg a feltöltés tart látható-->
+            <div class="alert alert-info" id="upload-info" style="display: none">
+                <div class="loader"></div>&nbsp;<strong>Feltöltés</strong></div>
+            <!--A feltöltés után válik láthatóvá-->
+            <div class="alert alert-success" id="upload-info" style="display: none"><strong>Feltöltés Sikeres!</strong></div>
+            <button class="btn btn-default" id="upload">Feltöltés</button>
         </section>
     </div>
     <script>
         var images;
-        
         $('input:file').change(function (e) {
             e.preventDefault();
             $('#file-name').val(e.target.files[0].name);
@@ -35,15 +40,19 @@
         $('.file-drop').on('dragenter dragstart dragend dragleave dragover drag drop', function (ev) {
             ev.preventDefault();
         });
+        $('.file-drop').on('dragover', function (e) {
+            e.preventDefault();
+            $('.file-drop').css("border-color", "black");
+        });
+        $('.file-drop').on('dragleave drop', function (e) {
+            e.preventDefault();
+            $('.file-drop').css("border-color", "lightgrey");
+        });
         $('.file-drop').on('drop', function (ev) {
             ev.preventDefault();
             var files = ev.originalEvent.dataTransfer.files;
             images = $.grep(files, function (file) {
                 return file.type.indexOf("image/") === 0; // filter out images
-            });
-            var formData = new FormData();
-            $.each(images, function (i) {
-                formData.append(i, this);
             });
             $('#dropzone-message').remove();
             var imageCount = images.length;
@@ -73,11 +82,28 @@
                 }
             }
         });
-        $(document).on('click', '.close', function(e){
-           images = $.grep(images, function(image){
-              return image.name != e.target.id;
-           });
-           $(this).parent().remove();
+        $(document).on('click', '.close', function (e) {
+            images = $.grep(images, function (image) {
+                return image.name != e.target.id;
+            });
+            $(this).parent().remove();
+        });
+        $('#upload').click(function () {
+            var formData = new FormData();
+            $.each(images, function (i) {
+                formData.append(i, this);
+            });
+            jQuery.ajax({
+                url: 'php/upload.php'
+                , data: data
+                , cache: false
+                , contentType: false
+                , processData: false
+                , type: 'POST'
+                , success: function (data) {
+                    alert(data);
+                }
+            });
         });
     </script>
 </body>
