@@ -1,7 +1,6 @@
 <?php
-    require('../../confs/main.php');
-    require("../header.php");
-    require("../menu.php");
+    require("View/header.php");
+    require("View/menu.php");
 ?>
     <div class="container-fluid">
         <!--Image Slider-->
