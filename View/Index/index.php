@@ -18,13 +18,13 @@
                         <p>Image 1</p>
                     </div>
                 </div>
-                <div class="item"> <img src=/Public/IMAGES/image2.jpg" alt="image 2">
+                <div class="item"> <img src="/Public/IMAGES/image2.jpg" alt="image 2">
                     <div class="carousel-caption">
                         <h3>Image 2</h3>
                         <p>Image 2</p>
                     </div>
                 </div>
-                <div class="item"> <img src=/Public/IMAGES/image3.jpg" alt="image 3">
+                <div class="item"> <img src="/Public/IMAGES/image3.jpg" alt="image 3">
                     <div class="carousel-caption">
                         <h3>Image 3</h3>
                         <p>Image 3</p>
