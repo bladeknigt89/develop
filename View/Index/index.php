@@ -12,25 +12,25 @@
                 <li data-target="#slider" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="item active"> <img src="images/image1.jpg" alt="image 1">
+                <div class="item active"> <img src="/Public/IMAGES/image1.jpg" alt="image 1">
                     <div class="carousel-caption">
                         <h3>Image 1</h3>
                         <p>Image 1</p>
                     </div>
                 </div>
-                <div class="item"> <img src="images/image2.jpg" alt="image 2">
+                <div class="item"> <img src=/Public/IMAGES/image2.jpg" alt="image 2">
                     <div class="carousel-caption">
                         <h3>Image 2</h3>
                         <p>Image 2</p>
                     </div>
                 </div>
-                <div class="item"> <img src="images/image3.jpg" alt="image 3">
+                <div class="item"> <img src=/Public/IMAGES/image3.jpg" alt="image 3">
                     <div class="carousel-caption">
                         <h3>Image 3</h3>
                         <p>Image 3</p>
                     </div>
                 </div>
-                <div class="item"> <img src="images/image4.jpg" alt="image 4">
+                <div class="item"> <img src="/Public/IMAGES/image4.jpg" alt="image 4">
                     <div class="carousel-caption">
                         <h3>Image 4</h3>
                         <p>Image 4</p>
