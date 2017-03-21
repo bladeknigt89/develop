@@ -1,7 +1,7 @@
 <?php $menuPoints = array(
     array('name' => 'Kezdőlap', 'link' => 'index','active'=>'true'),
-    array('name' => 'Galéria', 'link' => 'galery','active'=>'false'),
-    array('name' => 'Árlista', 'link' => 'prices','active'=>'false')
+    array('name' => 'Galéria', 'link' => 'gallery','active'=>'true'),
+    array('name' => 'Árlista', 'link' => 'prices','active'=>'true')
 );
 ?>
 
@@ -19,7 +19,7 @@
                 if($menuPoint['active'] == true){
                     $menuHtml .= " class='active' ";
                 }
-                $menuHtml .= "><a href='" . $link . ".php'>$name</a></li>";
+                $menuHtml .= "><a href='" . $link . "'>$name</a></li>";
                 echo $menuHtml;
         } ?>
                     </ul>
